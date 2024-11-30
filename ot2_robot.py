@@ -427,7 +427,7 @@ class MultiContainer(Container):
 class Tube(Container):
     '''
     This abstract class implements shared features of all the tubes. Right now
-    this is just the mix method for 20000 and 50000. 2000 overrides this method
+    this is just the mix method for 15000 and 50000. 2000 overrides this method
     anyways.
     '''
     def mix(self, pipette, mix_vol, mix_code):
@@ -472,7 +472,7 @@ class Tube(Container):
                 pipette.mix(1, mix_vol, self.get_well(), rate=100.0)
                 pipette.blow_out()
 
-class Tube20000uL(Tube):
+class Tube15000uL(Tube):
     """
     Spcific tube with measurements taken to provide implementations of abstract methods  
     INHERITED ATTRIBUTES:  
@@ -775,7 +775,7 @@ class TubeHolder(Labware):
           not put tubes into every slot. Sorted order smallest tube to largest  
     '''
 
-    CONTAINERS_SERVICED = ['Tube50000uL', 'Tube20000uL', 'Tube2000uL']
+    CONTAINERS_SERVICED = ['Tube50000uL', 'Tube15000uL', 'Tube2000uL']
 
     def __init__(self, labware, empty_tubes, deck_pos):
         super().__init__(labware,deck_pos)
@@ -860,8 +860,8 @@ class TubeHolder(Labware):
             tube_capacity = vol
         if tube_capacity <= 2000:
             return 'Tube2000uL'
-        elif tube_capacity <= 20000:
-            return 'Tube20000uL'
+        elif tube_capacity <= 15000:
+            return 'Tube15000uL'
         else:
             return 'Tube50000uL'
 
@@ -1220,8 +1220,8 @@ class OT2Robot():
         labware = self.lab_deck[deck_pos].labware
         if container_type == 'Tube2000uL':
             return Tube2000uL(name, deck_pos, loc, labware, **kwargs)
-        elif container_type == 'Tube20000uL':
-            return Tube20000uL(name, deck_pos, loc, labware, **kwargs)
+        elif container_type == 'Tube15000uL':
+            return Tube15000uL(name, deck_pos, loc, labware, **kwargs)
         elif container_type == 'Tube50000uL':
             return Tube50000uL(name, deck_pos, loc, labware, **kwargs)
         elif container_type == 'Well96':

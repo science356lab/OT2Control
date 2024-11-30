@@ -465,7 +465,7 @@ class MultiContainer(Container):
 class Tube(Container):
     &#39;&#39;&#39;
     This class implements shared features of all the tubes. Right now
-    this is just the mix method for 20000 and 50000. 2000 overrides this method
+    this is just the mix method for 15000 and 50000. 2000 overrides this method
     anyways.
     &#39;&#39;&#39;
     def mix(self, pipette, mix_vol, mix_code):
@@ -514,7 +514,7 @@ class Tube(Container):
     def disp_height(self):
         return self.height + 20 #mm
 
-class Tube20000uL(Tube):
+class Tube15000uL(Tube):
     &#34;&#34;&#34;
     Spcific tube with measurements taken to provide implementations of abstract methods  
     INHERITED ATTRIBUTES:  
@@ -798,7 +798,7 @@ class TubeHolder(Labware):
           not put tubes into every slot. Sorted order smallest tube to largest  
     &#39;&#39;&#39;
 
-    CONTAINERS_SERVICED = [&#39;Tube50000uL&#39;, &#39;Tube20000uL&#39;, &#39;Tube2000uL&#39;]
+    CONTAINERS_SERVICED = [&#39;Tube50000uL&#39;, &#39;Tube15000uL&#39;, &#39;Tube2000uL&#39;]
 
     def __init__(self, labware, empty_tubes, deck_pos):
         super().__init__(labware,deck_pos)
@@ -883,8 +883,8 @@ class TubeHolder(Labware):
             tube_capacity = vol
         if tube_capacity &lt;= 2000:
             return &#39;Tube2000uL&#39;
-        elif tube_capacity &lt;= 20000:
-            return &#39;Tube20000uL&#39;
+        elif tube_capacity &lt;= 15000:
+            return &#39;Tube15000uL&#39;
         else:
             return &#39;Tube50000uL&#39;
 
@@ -1235,8 +1235,8 @@ class OT2Robot():
         labware = self.lab_deck[deck_pos].labware
         if container_type == &#39;Tube2000uL&#39;:
             return Tube2000uL(name, deck_pos, loc, labware, **kwargs)
-        elif container_type == &#39;Tube20000uL&#39;:
-            return Tube20000uL(name, deck_pos, loc, labware, **kwargs)
+        elif container_type == &#39;Tube15000uL&#39;:
+            return Tube15000uL(name, deck_pos, loc, labware, **kwargs)
         elif container_type == &#39;Tube50000uL&#39;:
             return Tube50000uL(name, deck_pos, loc, labware, **kwargs)
         elif container_type == &#39;Well96&#39;:
@@ -3611,8 +3611,8 @@ to operating with them</p></div>
         labware = self.lab_deck[deck_pos].labware
         if container_type == &#39;Tube2000uL&#39;:
             return Tube2000uL(name, deck_pos, loc, labware, **kwargs)
-        elif container_type == &#39;Tube20000uL&#39;:
-            return Tube20000uL(name, deck_pos, loc, labware, **kwargs)
+        elif container_type == &#39;Tube15000uL&#39;:
+            return Tube15000uL(name, deck_pos, loc, labware, **kwargs)
         elif container_type == &#39;Tube50000uL&#39;:
             return Tube50000uL(name, deck_pos, loc, labware, **kwargs)
         elif container_type == &#39;Well96&#39;:
@@ -4492,7 +4492,7 @@ def execute(self, command_type, cid, arguments):
 </code></dt>
 <dd>
 <div class="desc"><p>This class implements shared features of all the tubes. Right now
-this is just the mix method for 20000 and 50000. 2000 overrides this method
+this is just the mix method for 15000 and 50000. 2000 overrides this method
 anyways.</p></div>
 <details class="source">
 <summary>
@@ -4501,7 +4501,7 @@ anyways.</p></div>
 <pre><code class="python">class Tube(Container):
     &#39;&#39;&#39;
     This class implements shared features of all the tubes. Right now
-    this is just the mix method for 20000 and 50000. 2000 overrides this method
+    this is just the mix method for 15000 and 50000. 2000 overrides this method
     anyways.
     &#39;&#39;&#39;
     def mix(self, pipette, mix_vol, mix_code):
@@ -4557,7 +4557,7 @@ anyways.</p></div>
 </ul>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="ot2_robot.Tube20000uL" href="#ot2_robot.Tube20000uL">Tube20000uL</a></li>
+<li><a title="ot2_robot.Tube15000uL" href="#ot2_robot.Tube15000uL">Tube15000uL</a></li>
 <li><a title="ot2_robot.Tube2000uL" href="#ot2_robot.Tube2000uL">Tube2000uL</a></li>
 <li><a title="ot2_robot.Tube50000uL" href="#ot2_robot.Tube50000uL">Tube50000uL</a></li>
 </ul>
@@ -4590,8 +4590,8 @@ def disp_height(self):
 </li>
 </ul>
 </dd>
-<dt id="ot2_robot.Tube20000uL"><code class="flex name class">
-<span>class <span class="ident">Tube20000uL</span></span>
+<dt id="ot2_robot.Tube15000uL"><code class="flex name class">
+<span>class <span class="ident">Tube15000uL</span></span>
 <span>(</span><span>name, deck_pos, loc, labware, mass=6.9731, conc=1)</span>
 </code></dt>
 <dd>
@@ -4610,7 +4610,7 @@ _update_height void, update_vol(float del_vol) void,
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class Tube20000uL(Tube):
+<pre><code class="python">class Tube15000uL(Tube):
     &#34;&#34;&#34;
     Spcific tube with measurements taken to provide implementations of abstract methods  
     INHERITED ATTRIBUTES:  
@@ -4658,18 +4658,18 @@ _update_height void, update_vol(float del_vol) void,
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="ot2_robot.Tube20000uL.DEAD_VOL"><code class="name">var <span class="ident">DEAD_VOL</span></code></dt>
+<dt id="ot2_robot.Tube15000uL.DEAD_VOL"><code class="name">var <span class="ident">DEAD_VOL</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="ot2_robot.Tube20000uL.MIN_HEIGHT"><code class="name">var <span class="ident">MIN_HEIGHT</span></code></dt>
+<dt id="ot2_robot.Tube15000uL.MIN_HEIGHT"><code class="name">var <span class="ident">MIN_HEIGHT</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Instance variables</h3>
 <dl>
-<dt id="ot2_robot.Tube20000uL.asp_height"><code class="name">var <span class="ident">asp_height</span></code></dt>
+<dt id="ot2_robot.Tube15000uL.asp_height"><code class="name">var <span class="ident">asp_height</span></code></dt>
 <dd>
 <div class="desc"></div>
 <details class="source">
@@ -4964,7 +4964,7 @@ not put tubes into every slot. Sorted order smallest tube to largest</p></div>
           not put tubes into every slot. Sorted order smallest tube to largest  
     &#39;&#39;&#39;
 
-    CONTAINERS_SERVICED = [&#39;Tube50000uL&#39;, &#39;Tube20000uL&#39;, &#39;Tube2000uL&#39;]
+    CONTAINERS_SERVICED = [&#39;Tube50000uL&#39;, &#39;Tube15000uL&#39;, &#39;Tube2000uL&#39;]
 
     def __init__(self, labware, empty_tubes, deck_pos):
         super().__init__(labware,deck_pos)
@@ -5049,8 +5049,8 @@ not put tubes into every slot. Sorted order smallest tube to largest</p></div>
             tube_capacity = vol
         if tube_capacity &lt;= 2000:
             return &#39;Tube2000uL&#39;
-        elif tube_capacity &lt;= 20000:
-            return &#39;Tube20000uL&#39;
+        elif tube_capacity &lt;= 15000:
+            return &#39;Tube15000uL&#39;
         else:
             return &#39;Tube50000uL&#39;</code></pre>
 </details>
@@ -5099,8 +5099,8 @@ str: the type of container at that loc</p></div>
         tube_capacity = vol
     if tube_capacity &lt;= 2000:
         return &#39;Tube2000uL&#39;
-    elif tube_capacity &lt;= 20000:
-        return &#39;Tube20000uL&#39;
+    elif tube_capacity &lt;= 15000:
+        return &#39;Tube15000uL&#39;
     else:
         return &#39;Tube50000uL&#39;</code></pre>
 </details>
@@ -5881,11 +5881,11 @@ str: the type of container</p></div>
 </ul>
 </li>
 <li>
-<h4><code><a title="ot2_robot.Tube20000uL" href="#ot2_robot.Tube20000uL">Tube20000uL</a></code></h4>
+<h4><code><a title="ot2_robot.Tube15000uL" href="#ot2_robot.Tube15000uL">Tube15000uL</a></code></h4>
 <ul class="">
-<li><code><a title="ot2_robot.Tube20000uL.DEAD_VOL" href="#ot2_robot.Tube20000uL.DEAD_VOL">DEAD_VOL</a></code></li>
-<li><code><a title="ot2_robot.Tube20000uL.MIN_HEIGHT" href="#ot2_robot.Tube20000uL.MIN_HEIGHT">MIN_HEIGHT</a></code></li>
-<li><code><a title="ot2_robot.Tube20000uL.asp_height" href="#ot2_robot.Tube20000uL.asp_height">asp_height</a></code></li>
+<li><code><a title="ot2_robot.Tube15000uL.DEAD_VOL" href="#ot2_robot.Tube15000uL.DEAD_VOL">DEAD_VOL</a></code></li>
+<li><code><a title="ot2_robot.Tube15000uL.MIN_HEIGHT" href="#ot2_robot.Tube15000uL.MIN_HEIGHT">MIN_HEIGHT</a></code></li>
+<li><code><a title="ot2_robot.Tube15000uL.asp_height" href="#ot2_robot.Tube15000uL.asp_height">asp_height</a></code></li>
 </ul>
 </li>
 <li>
